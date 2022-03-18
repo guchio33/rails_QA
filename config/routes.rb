@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :questions
   root 'home#index'
   get 'home/index'
+  
+  resources :questions
   devise_for :users, controllers: { 
     registrations: 'users/registrations', #app/controllers/users/registrations参照 ユーザ登録
     session: 'users/sessions'#app/controllers/users/sessions参照 ログイン

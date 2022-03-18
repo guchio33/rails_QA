@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[ show edit update destroy ]
+  before_action :set_question,only: [:show, :edit, :update, :destroy]
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.all
+    @questions = current_user.questions.all
   end
 
   # GET /questions/1 or /questions/1.json
@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
 
   # POST /questions or /questions.json
   def create
-    @question = Question.new(question_params)
+    @question =  current_user.questions.build(question_params)
 
     respond_to do |format|
       if @question.save
