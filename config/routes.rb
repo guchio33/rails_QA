@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :questions
-  root 'home#index'
-  get 'home/index'
+  root 'homepage#index'
+  get 'questions' => 'questions#index'
+  # get 'questions', to: 'questions#index'
   
   resources :questions
   devise_for :users, controllers: { 
